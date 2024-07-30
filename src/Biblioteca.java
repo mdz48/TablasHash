@@ -39,8 +39,12 @@ public class Biblioteca {
     }
 
     public void mostrarLibros() {
-        for (Libro libro : libros.values()) {
-            System.out.println(libro);
+        if (!libros.isEmpty()){
+            for (Libro libro : libros.values()) {
+                System.out.println(libro);
+            }
+        } else {
+            System.out.println("No existen libros registrados");
         }
     }
 }

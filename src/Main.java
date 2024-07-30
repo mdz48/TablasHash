@@ -14,37 +14,44 @@ public class Main {
             System.out.println("3. Eliminar un libro");
             System.out.println("4. Mostrar todos los libros");
             System.out.println("5. Salir");
-            int opcion = scanner.nextInt();
-            scanner.nextLine();
 
-            switch (opcion) {
-                case 1:
-                    biblioteca.cargarLibros(txt);
-                    break;
-                case 2:
-                    System.out.println("Ingrese el nombre del autor a buscar:");
-                    String autorBuscar = scanner.nextLine();
-                    Libro libroEncontrado = biblioteca.buscarLibro(autorBuscar);
-                    if (libroEncontrado != null) {
-                        System.out.println("Libro encontrado: " + libroEncontrado);
-                    } else {
-                        System.out.println("El autor no existe en la biblioteca.");
-                    }
-                    break;
-                case 3:
-                    System.out.println("Ingrese el nombre del autor del libro a eliminar:");
-                    String autorEliminar = scanner.nextLine();
-                    biblioteca.eliminarLibro(autorEliminar);
-                    break;
-                case 4:
-                    biblioteca.mostrarLibros();
-                    break;
-                case 5:
-                    System.out.println("Saliendo...");
-                    scanner.close();
-                    return;
-                default:
-                    System.out.println("Opción no válida. Intente nuevamente.");
+            if (scanner.hasNextInt()) {
+                int opcion = scanner.nextInt();
+                scanner.nextLine();
+
+                switch (opcion) {
+                    case 1:
+                        biblioteca.cargarLibros(txt);
+                        System.out.println("Libros dados de alta");
+                        break;
+                    case 2:
+                        System.out.println("Ingrese el nombre del autor a buscar:");
+                        String autorBuscar = scanner.nextLine();
+                        Libro libroEncontrado = biblioteca.buscarLibro(autorBuscar);
+                        if (libroEncontrado != null) {
+                            System.out.println("Libro encontrado: " + libroEncontrado);
+                        } else {
+                            System.out.println("El autor no existe en la biblioteca.");
+                        }
+                        break;
+                    case 3:
+                        System.out.println("Ingrese el nombre del autor del libro a eliminar:");
+                        String autorEliminar = scanner.nextLine();
+                        biblioteca.eliminarLibro(autorEliminar);
+                        break;
+                    case 4:
+                        biblioteca.mostrarLibros();
+                        break;
+                    case 5:
+                        System.out.println("Saliendo...");
+                        scanner.close();
+                        return;
+                    default:
+                        System.out.println("Opción no válida. Intente nuevamente.");
+                }
+            } else {
+                System.out.println("Entrada no válida. Por favor, ingrese un número.");
+                scanner.next();
             }
         }
     }
